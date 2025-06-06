@@ -16,12 +16,7 @@ jobs:
       run: docker build -t logger .
     - name: Run docker
       run: |
-        
-        docker run -i -v "$(pwd)/logs/:/home/logs/" logger
-        text1
-        text2
-        text3
-        <C-D>
+        echo text1 | docker run -i -v "$(pwd)/logs/:/home/logs/" logger
     - name: logs1
       run: |
         docker inspect logger
