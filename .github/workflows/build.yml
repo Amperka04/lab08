@@ -17,7 +17,7 @@ jobs:
     - name: Run docker
       run: |
         
-        docker run -it -v "$(pwd)/logs/:/home/logs/" logger
+        docker run -i -v "$(pwd)/logs/:/home/logs/" logger
         text1
         text2
         text3
