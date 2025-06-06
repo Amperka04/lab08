@@ -12,19 +12,24 @@ jobs:
     steps:
     - name: Check out repository code
       uses: actions/checkout@v4
-    - name: Docker build image
+
+    - name: Docker build image  
       run: docker build -t logger .
+
     - name: Run docker
       run: |
         echo text1 | docker run -i -v "$(pwd)/logs/:/home/logs/" logger
+
     - name: logs1
       run: |
         docker inspect logger
+
     - name: logs2
       run: |
         cat logs/log.txt
+
     - name: Upload logs
       uses: actions/upload-artifact@v4
       with:
-      name: logs
+        name: logs
         path: logs/
