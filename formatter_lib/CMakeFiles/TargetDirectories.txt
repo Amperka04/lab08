@@ -1,5 +1,0 @@
-/home/bivan/Amperka04/workspace/projects/lab03/formatter_lib/CMakeFiles/edit_cache.dir
-/home/bivan/Amperka04/workspace/projects/lab03/formatter_lib/CMakeFiles/rebuild_cache.dir
-/home/bivan/Amperka04/workspace/projects/lab03/formatter_lib/formatter_lib/CMakeFiles/formatter.dir
-/home/bivan/Amperka04/workspace/projects/lab03/formatter_lib/formatter_lib/CMakeFiles/edit_cache.dir
-/home/bivan/Amperka04/workspace/projects/lab03/formatter_lib/formatter_lib/CMakeFiles/rebuild_cache.dir
