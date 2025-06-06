@@ -1,40 +1,35 @@
 name: GitHub Actions 
 run-name: ${{ github.actor }} test
-on: [push]
+on: 
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
 jobs:
-  Test:
+  docker:
     runs-on: ubuntu-latest
     steps:
     - name: Check out repository code
       uses: actions/checkout@v4
-    - name: Вывод содержимого директории
+    - name: Docker build image
+      run: docker build -t logger .
+    - name: Run docker
       run: |
-        ls ${{ github.workspace }}
-    - name: CMake Action
-      uses: threeal/cmake-action@v2.1.0
-    - name: Компиляция
-      run: cmake -H. -Bbuild
-    - name: Компиляция2
-      run:  cmake --build build
-    - name: Вывод содержимого директории
+        mkdir logs
+        docker run -it -v "$(pwd)/logs/:/home/logs/" logger
+        text1
+        text2
+        text3
+        <C-D>
+    - name: logs1
       run: |
-        ls ${{ github.workspace }}
-    - name: Тест
-      working-directory: ./build/hello_world_application
-      run: ./hello
-  Test_win:
-    runs-on: windows-latest
-    steps:
-    - name: Check out repository code
-      uses: actions/checkout@v4
-    - name: Вывод содержимого директории
-      run: dir ${{ github.workspace }}
-    - name: Setup CMake
-      uses: threeal/cmake-action@v2.1.0
-    - name: Компиляция
-      run: cmake --build build --config Release
-    - name: Вывод содержимого директории
-      run: dir ${{ github.workspace }}\build
-    - name: Тест
-      working-directory: ./build/hello_world_application/Release
-      run: .\hello.exe
+        docker inspect logger
+    - name: logs2
+      run: |
+        cat logs/log.txt
+    - name: Upload logs
+      uses: actions/upload-artifact@v4
+      with:
+      name: logs
+        path: logs/
