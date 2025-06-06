@@ -1,0 +1,5 @@
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+project(solver_lib)
+set(SOURCE_LIB solver.cpp)
+add_library(solver_l STATIC ${SOURCE_LIB})
