@@ -18,7 +18,7 @@ jobs:
 
     - name: Run docker
       run: |
-        echo text1 | docker run -i -v "$(pwd)/logs/:/home/logs/" logger
+        echo Docker worked succesfully. Success! | docker run -i -v "$(pwd)/logs/:/home/logs/" logger
 
     - name: logs1
       run: |
